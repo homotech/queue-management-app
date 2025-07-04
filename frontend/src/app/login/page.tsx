@@ -1,0 +1,67 @@
+"use client";
+import axios from "@/../lib/axios";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+// import Link from "next/link";
+import QMALink from "@/components/QMALink";
+
+const Login = () => {
+  const router = useRouter();
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("auth/login", form);
+      localStorage.setItem("token", res.data.token);
+      toast.success("Guess what? You're in");
+      router.push("/dashboard");
+    } catch (error: any) {
+      toast.error(
+        error.response?.data?.message ||
+          "Something ain't right, can you try again?"
+      );
+    }
+  };
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <h1 className="text-4xl mb-4"> Sign In</h1>
+      <form onSubmit={handleSubmit}>
+        <Input
+          type="email"
+          name="email"
+          onChange={handleChange}
+          value={form.email}
+          placeholder="Email Address"
+        />
+        <Input
+          type="password"
+          name="password"
+          onChange={handleChange}
+          value={form.password}
+          placeholder="Password"
+        />
+        <Button type="submit" full={true}>
+          Sign in
+        </Button>
+        <p className="mt-2">
+          Don't have an account? <QMALink href="/signup">Sign up</QMALink>
+        </p>
+        <p className="mt-2">
+          Awww, did you forget your password,{" "}
+          <QMALink href="/forgotpassword">Reset your password here</QMALink>
+        </p>
+      </form>
+    </div>
+  );
+};
+export default Login;
