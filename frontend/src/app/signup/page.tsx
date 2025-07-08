@@ -6,6 +6,7 @@ import axios from "@/../lib/axios";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import QMALink from "@/components/QMALink";
+import PasswordInput from "@/components/passwordInput";
 const Signup = () => {
   const [form, setform] = useState({
     businessName: "",
@@ -52,15 +53,15 @@ const Signup = () => {
           value={form.email}
           placeholder="Email Address"
         />
-        <Input
-          type="password"
+        <PasswordInput
           name="password"
-          onChange={handleChange}
-          value={form.password}
-          placeholder="Password"
+          formValue={form.password}
+          handleChange={handleChange}
+          placeholder="Enter Password"
         />
+
         <Input
-          type="password"
+          type="number"
           name="securityPin"
           onChange={handleChange}
           value={form.securityPin}

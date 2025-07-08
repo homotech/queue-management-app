@@ -46,7 +46,7 @@ const ForgotPassword = () => {
           onChange={handleChange}
         />
         <Input
-          type="password"
+          type="number"
           name="securityPin"
           value={form.securityPin}
           placeholder="What's is your security pin?"

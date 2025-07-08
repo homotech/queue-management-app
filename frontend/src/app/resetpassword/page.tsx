@@ -2,6 +2,7 @@
 import axios from "@/../lib/axios";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import PasswordInput from "@/components/passwordInput";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -40,19 +41,17 @@ const ResetPassword = () => {
           onChange={handleChange}
           name="email"
         />
-        <Input
-          type="password"
-          value={form.newPassword}
-          placeholder="Add a new password?"
-          onChange={handleChange}
+        <PasswordInput
           name="newPassword"
+          formValue={form.newPassword}
+          handleChange={handleChange}
+          placeholder="Add a new password?"
         />
-        <Input
-          type="password"
-          value={form.confirmPassword}
-          placeholder="Please type it in again"
-          onChange={handleChange}
+        <PasswordInput
           name="confirmPassword"
+          formValue={form.confirmPassword}
+          handleChange={handleChange}
+          placeholder="Please type it in again"
         />
         <Button type="submit" full={true}>
           Reset Password

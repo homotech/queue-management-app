@@ -1,19 +1,25 @@
 "use client";
 import axios from "@/../lib/axios";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 // import Link from "next/link";
 import QMALink from "@/components/QMALink";
+import PasswordInput from "@/components/passwordInput";
 
 const Login = () => {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  const handleShowPassword = () => {
+    setShowPassword((prevState) => !prevState);
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
@@ -43,12 +49,11 @@ const Login = () => {
           value={form.email}
           placeholder="Email Address"
         />
-        <Input
-          type="password"
+        <PasswordInput
           name="password"
-          onChange={handleChange}
-          value={form.password}
-          placeholder="Password"
+          handleChange={handleChange}
+          placeholder="Enter Password"
+          formValue={form.password}
         />
         <Button type="submit" full={true}>
           Sign in
