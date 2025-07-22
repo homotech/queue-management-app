@@ -1,4 +1,5 @@
 const Business = require("../models/business");
+const Service = require("../models/service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
@@ -107,5 +108,23 @@ exports.resetpassword = async (req, res) => {
   } catch (error) {
     console.error("Reset Password Error:", error);
     res.status(500).json({ message: "Nah man, Something went wrong!" });
+  }
+};
+
+exports.deleteAccount = async (req, res) => {
+  // const { email };
+  try {
+    const businessId = req.user.id;
+    await Service.deleteMany({ businessId });
+    const deleted = await Business.findByIdAndDelete(businessId);
+    if (!deleted) {
+      return res.status(404).json({ message: "Account wasn't deleted" });
+    }
+    return res.status(200).json({ message: "Account deleted successfully" });
+  } catch (error) {
+    console.error("Delete Account:", error);
+    return res
+      .status(500)
+      .json({ message: "Something went wrong while deleting account" });
   }
 };
