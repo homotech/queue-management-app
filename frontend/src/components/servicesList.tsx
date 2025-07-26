@@ -37,7 +37,7 @@ const ServicesList = ({ services }: ServiceListProps) => {
       )}
       <div className="flex gap-4">
         <h1 className="text-4xl">Services</h1>{" "}
-        <Button full={false} onClick={showModal}>
+        <Button fullWidth={false} onClick={showModal}>
           <FontAwesomeIcon icon={faPlus} /> Create Service
         </Button>
       </div>

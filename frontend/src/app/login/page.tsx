@@ -39,15 +39,17 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-4xl mb-4"> Sign In</h1>
+    <div className="flex flex-col items-left justify-center min-h-screen bg-gray-100 p-8">
+      <h1 className="text-4xl mb-8 font-bold"> Sign In</h1>
       <form onSubmit={handleSubmit}>
         <Input
+          additionalStyles="mb-4"
+          label="Email Address"
           type="email"
           name="email"
           onChange={handleChange}
           value={form.email}
-          placeholder="Email Address"
+          placeholder="example@email.com"
         />
         <PasswordInput
           name="password"
@@ -55,15 +57,15 @@ const Login = () => {
           placeholder="Enter Password"
           formValue={form.password}
         />
-        <Button type="submit" full={true}>
+        <Button type="submit" fullWidth={true}>
           Sign in
         </Button>
         <p className="mt-2">
           Don't have an account? <QMALink href="/signup">Sign up</QMALink>
         </p>
         <p className="mt-2">
-          Awww, did you forget your password,{" "}
-          <QMALink href="/forgotpassword">Reset your password here</QMALink>
+          Can't remember your password?{" "}
+          <QMALink href="/forgotpassword">Reset it</QMALink>
         </p>
       </form>
     </div>

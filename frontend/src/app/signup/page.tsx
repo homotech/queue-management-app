@@ -36,10 +36,12 @@ const Signup = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-4xl mb-4">Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col items-start w-full justify-center min-h-screen bg-gray-100 px-8">
+      <h1 className="text-4xl mb-4 font-bold tracking-tighter">Sign Up</h1>
+      <form onSubmit={handleSubmit} className="w-full">
         <Input
+          label="Business Name"
+          additionalStyles="mb-4"
           type="text"
           name="businessName"
           onChange={handleChange}
@@ -47,6 +49,8 @@ const Signup = () => {
           placeholder="Business Name"
         />
         <Input
+          label="Email Address"
+          additionalStyles="mb-4"
           type="email"
           name="email"
           onChange={handleChange}
@@ -61,13 +65,15 @@ const Signup = () => {
         />
 
         <Input
+          label="Security Pin"
           type="number"
+          additionalStyles="mb-4"
           name="securityPin"
           onChange={handleChange}
           value={form.securityPin}
           placeholder="Enter a 4-digit Security Pin"
         />
-        <Button type="submit" full={true}>
+        <Button type="submit" fullWidth={true} additionalStyles="mb-4">
           Sign up
         </Button>
         <p>

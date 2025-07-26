@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "@/../lib/axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import QMALink from "@/components/QMALink";
 
 // import useRouter from "next/navigation";
 
@@ -35,26 +36,36 @@ const ForgotPassword = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-4xl mb-4">Forgotten Password</h1>
-      <form action="" onSubmit={handleSubmit}>
+    <div className="flex flex-col items-start justify-center min-h-screen bg-gray-100 p-8 w-full">
+      <h1 className="text-4xl mb-4 tracking-tighter font-bold">
+        Forgotten Password
+      </h1>
+      <form onSubmit={handleSubmit} className="w-full">
         <Input
           type="email"
+          label="Email Address"
+          additionalStyles="mb-4"
           name="email"
           value={form.email}
           placeholder="What's your business email?"
           onChange={handleChange}
         />
         <Input
+          label="Security Pin"
           type="number"
+          additionalStyles="mb-4"
           name="securityPin"
           value={form.securityPin}
           placeholder="What's is your security pin?"
           onChange={handleChange}
         />
-        <Button type="submit" full={true}>
+        <Button type="submit" fullWidth={true} additionalStyles="mb-4">
           Submit
         </Button>
+
+        <p>
+          Back to <QMALink href="/login">Log in</QMALink>
+        </p>
       </form>
     </div>
   );

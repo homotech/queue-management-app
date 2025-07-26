@@ -31,10 +31,10 @@ const Services = ({ name, price, duration }: serviceProps) => {
         )}
       </div>
       <div>
-        <Button full={true}>
+        <Button fullWidth={true}>
           <FontAwesomeIcon icon={faEdit} />
         </Button>
-        <Button full={true}>
+        <Button fullWidth={true}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </Button>
       </div>

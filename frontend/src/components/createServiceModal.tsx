@@ -47,7 +47,7 @@ const CreateServiceModal = ({
       <div>
         <h1>{modalTitle} Service</h1>
         <Button
-          full={false}
+          fullWidth={false}
           onClick={showM}
           additionalStyles={servicesPage ? "hidden" : ""}
         >
@@ -61,7 +61,6 @@ const CreateServiceModal = ({
           value={form.name}
           type="text"
           onChange={handleChange}
-          disabled={false}
         />
         <Input
           name="price"
@@ -69,7 +68,6 @@ const CreateServiceModal = ({
           value={form.price.toString()}
           type="number"
           onChange={handleChange}
-          disabled={false}
         />
         <Input
           name="duration"
@@ -77,9 +75,8 @@ const CreateServiceModal = ({
           value={form.duration.toString()}
           type="number"
           onChange={handleChange}
-          disabled={false}
         />
-        <Button type="submit" full={false}>
+        <Button type="submit" fullWidth={false}>
           {isLoading ? (
             <LoadingState additionalStyles="h-full" mode={false} />
           ) : (

@@ -7,12 +7,14 @@ interface DashboardListProps {
   menuIcon: IconProp;
   currentPath: string;
   href: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 const DashboardList = ({
   title,
   menuIcon,
   href,
   currentPath,
+  onClick,
 }: //   active = false,
 DashboardListProps) => {
   const isActive = href === currentPath;

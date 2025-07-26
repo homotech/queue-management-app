@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 interface PasswordInputProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   formValue: string;
@@ -15,26 +17,35 @@ const PasswordInput = ({
   placeholder,
 }: PasswordInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => {
+  const handleShowPassword = (e: React.FormEvent) => {
+    e.preventDefault();
     setShowPassword((prevState) => !prevState);
   };
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 items-end">
       <Input
+        additionalStyles="mb-4 w-full"
+        label="Password"
+        disabled={false}
         type={showPassword ? "text" : "password"}
         name={name}
         onChange={handleChange}
         value={formValue}
         placeholder={placeholder || "Enter Password"}
       />
-      <Button
-        additionalStyles="bg-gray-700 text-gray-800 hover:bg-gray-800"
-        full={false}
-        type="button"
+      <button
         onClick={handleShowPassword}
+        className="flex-shrink-0 w-10 h-10 flex items-center justify-center border border-gray-300 rounded-md mb-4"
       >
-        {showPassword ? "Hide" : "Show"}
-      </Button>
+        {showPassword ? (
+          <FontAwesomeIcon
+            icon={faEyeSlash}
+            className="text-gray-600 text-lg"
+          />
+        ) : (
+          <FontAwesomeIcon icon={faEye} className="text-gray-600 text-lg" />
+        )}
+      </button>
     </div>
   );
 };

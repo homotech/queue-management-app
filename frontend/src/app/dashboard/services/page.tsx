@@ -87,7 +87,7 @@ const ServicesPage = () => {
             onChange={handleChange}
             disabled={false}
           />
-          <Button type="submit" full={false}>
+          <Button type="submit" fullWidth={false}>
             {isLoading ? (
               <LoadingState additionalStyles="h-full" mode={false} />
             ) : (
